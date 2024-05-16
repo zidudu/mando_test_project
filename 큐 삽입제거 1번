@@ -1,0 +1,78 @@
+#include <iostream>
+using namespace std;
+
+int insert(int list[], int i) {
+	if (i == 5) {
+		cout << "값이 꽉 차서 값을 넣을 수 없습니다";
+		return i;
+	}
+	else {
+		cout << "삽입할 정수를 넣으세요 :";
+		cin >> list[i + 1];
+		cout << "list[" << i + 1 << "]에 " << list[i + 1] << "값을 넣었습니다" << endl;
+		i++;
+		return i;
+	}
+}
+int Delete(int list[], int i,int *n) {
+	//i값이 -1이면 값이 없다면
+	if(i==-1){
+		cout << "값이 없어서 넣을 수 없습니다" << endl;
+		return i;
+	}
+	else {
+		cout << "인덱스 0번에 있는" <<list[0] << " 값을 삭제했습니다." << endl;
+		list[0] = NULL;
+		for (int j = 0; j < 5; j++) {
+			list[j] = list[j + 1];
+		}
+		i -= 1;
+		
+		return i;
+	}
+}
+int main() {
+
+	//
+	//배열 생성
+	int list[6];
+	//제어변수
+	string option;
+
+	//인덱스 가리키는 값 변수
+	int p=-1;
+
+	//배열 전체 인덱스 값
+	int list_value = sizeof(list) / sizeof(list[0]);
+	//루프
+	while (true)
+	{
+		if (p == -1) {
+			cout << "가리키는 값은 없습니다" <<endl;
+
+		}
+		else {
+			cout << "가리키는 값 :" << p << "번, " << list[p]<<" 값" << endl;
+		}
+		cout << "인덱스 값을 삽입하거나 삭제하세요[삽입:insert,삭제:delete]>>";
+		cin >> option;
+		//옵션마다 다른 함수 호출
+
+		//삽입
+		if (option == "insert") {
+			p=insert(list, p);
+		}
+		//삭제
+		else if (option == "delete") {
+			p=Delete(list, p, &list_value);
+		}
+		else {
+			cout << "다시 입력해 주세요" << endl;
+		}
+	}
+
+	
+
+
+
+}
