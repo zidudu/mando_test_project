@@ -1,0 +1,88 @@
+#include <iostream>
+using namespace std;
+
+void insert(int list[], int &i,int &in) {
+	if (i == 5&&in==0) {
+		cout << "값이 꽉차서 넣을 수 없습니다. 값을 삭제하고 삽입해주세요" << endl<<endl;
+		
+	}
+	else {
+		//스택 순환
+		if (i == 5) {
+			i = -1;
+		}
+
+		cout << "삽입할 정수를 넣으세요 :";
+		cin >> list[i + 1];
+		cout << "list[" << i + 1 << "]에 " << list[i + 1] << "값을 넣었습니다" << endl<<endl;
+		i++;
+		
+	}
+}
+void Delete(int list[], int &i,int &in) {
+	//i값이 -1이면 값이 없다면 안함
+	if(i==-1){
+		cout << "값이 없어서 넣을 수 없습니다" << endl<<endl;
+		
+	}
+	else  {
+		//삭제하는 변수가 5라면 0으로 만들어줌
+		if (in == 5) {
+			in = 0;
+		}
+		cout << "인덱스 "<<in<<"번에 있는" <<list[in] << " 값을 삭제했습니다." << endl<<endl;
+		list[in] = NULL;
+		i--;
+		in++;
+		
+		
+	}
+}
+int main() {
+
+	//
+	//배열 생성
+	int list[6];
+	//제어변수
+	string option;
+
+	//인덱스 가리키는 값 변수
+	int p=-1; //
+	
+	//제어 변수
+	int in=0;
+
+	////배열 전체 인덱스 값
+	//int list_value = sizeof(list) / sizeof(list[0]);
+	//루프
+	while (true)
+	{
+		if (p == -1) {
+			cout << "가리키는 값은 없습니다" <<endl;
+
+		}
+		else {
+			cout << "가리키는 값 :" << p << "번, " << list[p]<<" 값" << endl;
+		}
+		cout << "인덱스 값을 삽입하거나 삭제하세요[삽입:insert,삭제:delete]>>";
+		cin >> option;
+		//옵션마다 다른 함수 호출
+
+		//삽입
+		if (option == "insert") {
+			insert(list, p,in);
+		}
+		//삭제
+		else if (option == "delete") {
+			Delete(list, p, in);
+		}
+		else {
+			cout << "다시 입력해 주세요" << endl<<endl;
+		}
+	}
+
+	
+
+
+
+}
