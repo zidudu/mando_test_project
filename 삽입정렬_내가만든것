@@ -1,0 +1,44 @@
+
+#include <iostream>
+using namespace std;
+void insertionSort(int arr[], int n) {
+	int i, key, j;
+	
+	for (i = 1; i < n; i++) {
+		key = arr[i]; //현재 삽입될 숫자
+		j = i - 1; //삽입될 인덱스 값에서 앞으로 이동되는 횟수는 i-1임
+		//예를 들어 key는 arr[3]이면 i는 3이고, j=3-1=2가 된다. 3인덱스 위치까지 밑에 있는 
+		
+		//j가 가리키는 값과 key의 값을 비교해서 key보다 크면 인덱스를 뒤로 한칸 이동하는 것을 반복함
+		//그리고 적절한 위치에 key의 값을 넣음 그래서 삽입 정렬임
+		while (j >= 0 &&arr[j]>key) //j가 0보다 크거나 같고, arr의 j인덱스의 값이 key보다 클때
+		{
+			arr[j + 1] = arr[j]; //뒤에 있는 요소를 이동시킴
+			j--; //j값을 감소시킴
+		}
+		arr[j + 1] = key; //적절한 위치에 key 삽입
+
+	}
+}
+int main()
+{
+	int arr[] = { 12, 11, 13, 5, 6 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+
+	std::cout << "Original array: ";
+	for (int i = 0; i < n; i++)
+		std::cout << arr[i] << " ";
+	std::cout << "\n";
+
+	insertionSort(arr, n);
+
+	std::cout << "Sorted array:   ";
+	for (int i = 0; i < n; i++)
+		std::cout << arr[i] << " ";
+	std::cout << "\n";
+
+	return 0;
+
+
+
+}
