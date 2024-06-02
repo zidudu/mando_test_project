@@ -1,0 +1,90 @@
+
+#include <iostream>
+using namespace std;
+#define SIZE 5
+void CreatStack() {
+
+}
+void InsertStack(int stack[], int* top) {
+	if (*top >= SIZE-1) {
+		cout << "스택이 꽉 찼습니다" << endl;
+		return;
+	}
+	else {
+		cout << "삽입할 값을 적으세요: ";
+		*top = *top + 1;
+		cin >> stack[*top];
+		cout << *top << " 위치에 " << stack[*top] << " 값을 넣었습니다" << endl;
+	
+	}
+}
+void DeleteStack(int stack[], int* top) {
+	if (*top <= -1) {
+		cout << "스택이 없습니다" << endl;
+		return;
+	}
+	cout << *top << " 위치에 있는" << stack[*top] << " 값을 삭제했씁니다" << endl;
+	stack[*top] = NULL;
+	*top=*top-1;
+}
+void PrintStack(int stack[], int *top) {
+	if (*top<=-1) {
+		cout << "스택이 없습니다" << endl;
+		return;
+	}
+	else {
+		cout << "스택 값: ";
+		for (int i = 0; i <= *top; i++) {
+			cout << stack[i] << " ";
+		}
+		cout << endl;
+	}
+}
+int main()
+{
+	//스택 배열 생성
+	int stack[SIZE];
+	
+	//top 변수 생성
+	int top = -1;
+	//옵션 변수
+	int Option;
+	//종료 변수
+	bool End=false;
+	while (!End)
+	{
+		cout << "현재 top: " << top<<endl;
+		cout << "삽입 1,삭제 2,종료 3, 스택출력 4 :";
+		cin >> Option;
+		switch (Option)
+		{
+		case 1:
+			InsertStack(stack, &top);
+			break;
+		case 2:
+			DeleteStack(stack, &top);
+			break;
+		case 3:
+			End = true;
+			break;
+		case 4:
+			PrintStack(stack, &top);
+			break;
+		default:
+			cout << "다시 입력해주세요"<<endl;
+			break;
+
+		}
+	}
+	//삽입 함수
+	
+
+
+	//스택
+	//스택 생성
+	//삽입 
+	//삭제
+	//
+
+
+}
