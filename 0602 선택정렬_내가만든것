@@ -35,7 +35,8 @@ void PrintList(int arr[], int n) {
 int main()
 {
 	//선택정렬
-	
+	선택 정렬(selection sort)은 정렬되지 않은 데이터들에 대해 가장 작은 데이터를 찾아 가장 앞의 데이터와 교환해나가는 방식이다. 
+
 	
 	//배열 생성 및 초기화
 	int arr[] = { 64,25,12,22,11 };
