@@ -23,9 +23,11 @@ void DeleteStack(int stack[], int* top) {
 		cout << "스택이 없습니다" << endl;
 		return;
 	}
-	cout << *top << " 위치에 있는" << stack[*top] << " 값을 삭제했씁니다" << endl;
-	stack[*top] = NULL;
-	*top=*top-1;
+	else {
+		cout << *top << " 위치에 있는" << stack[*top] << " 값을 삭제했씁니다" << endl;
+		stack[*top] = NULL;
+		*top = *top - 1;
+	}
 }
 void PrintStack(int stack[], int *top) {
 	if (*top<=-1) {
@@ -38,6 +40,14 @@ void PrintStack(int stack[], int *top) {
 			cout << stack[i] << " ";
 		}
 		cout << endl;
+	}
+}
+void PeekStack(int stack[], int* top) {
+	if (*top <= -1) {
+		cout << "스택 값이 없습니다"<<endl;
+	}
+	else {
+		cout << "[top: " << *top << "]" << " [top의 값: " << stack[*top] << "]" << endl;
 	}
 }
 int main()
@@ -54,7 +64,7 @@ int main()
 	while (!End)
 	{
 		cout << "현재 top: " << top<<endl;
-		cout << "삽입 1,삭제 2,종료 3, 스택출력 4 :";
+		cout << "삽입 1,삭제 2,종료 3, 스택출력 4, top의 값 출력 5 :";
 		cin >> Option;
 		switch (Option)
 		{
@@ -70,11 +80,16 @@ int main()
 		case 4:
 			PrintStack(stack, &top);
 			break;
+		case 5:
+			PeekStack(stack, &top);
+			break;
+
 		default:
 			cout << "다시 입력해주세요"<<endl;
 			break;
 
 		}
+		cout << endl;
 	}
 	//삽입 함수
 	
