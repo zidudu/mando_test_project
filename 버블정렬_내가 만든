@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+void bubbleSort(int arr[], int n) {
+	//어차피 j인덱스와 그 뒤 인덱스를 비교하기 때문에
+	//마지막 인덱스를 가질 필요가 없고 가지면 오류가 남
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = 0; j < n - 1; i++)
+		{
+			if (arr[j] > arr[j + 1]) {
+				//j 인덱스 값이 더 크면 교환
+				swap(arr[j], arr[j + 1]);
+			}
+		}
+	}
+}
+void printlist(int arr[], int n) {
+	for (int i = 0; i < n; i++) {
+		std::cout << arr[i] << " ";
+	}
+	std::cout << "\n";
+
+}
+int main() {
+	int arr[] = { 64, 34, 25, 12, 22, 11, 90 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+
+	std::cout << "Original array: ";
+	printlist(arr, n);
+
+	bubbleSort(arr, n);
+
+	std::cout << "Sorted array:   ";
+	printlist(arr, n);
+	return 0;
+}
