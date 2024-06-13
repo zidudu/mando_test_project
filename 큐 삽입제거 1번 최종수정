@@ -1,0 +1,102 @@
+#include <iostream>
+#include <string>
+using namespace std;
+#define SIZE 6
+//큐의 rear
+int rear = -1;
+//큐의 front 
+int front = -1;
+
+void insert(int list[]) {
+	if (rear == SIZE) {
+		cout << "값이 꽉 차서 값을 넣을 수 없습니다";
+	}
+	else {
+		cout << "삽입할 정수를 넣으세요 :";
+		cin >> list[++rear];
+		cout << "list[" << rear << "]에 " << list[rear] << "값을 넣었습니다" << endl;
+	}
+}
+void Delete(int list[]) {
+	//i값이 -1이면 값이 없다면
+	if (front==rear) {
+		cout << "값이 없어서 넣을 수 없습니다" << endl;
+	}
+	else {
+		++front; //증가시켜 삭제할 원소를 가리키고 직접 삭제는 시키지 않음
+		cout << "list[" << front << "]에 " << list[front] << "값을 삭제했습니다" << endl;
+		
+	}
+}
+void PrintList(int list[] ) {
+	//만약 값이 없다면 
+	if (front == rear) {
+		//cout << "값이 없어서 출력할 수 없습니다" << endl;
+		
+	}
+	else {
+		cout << "리스트 값: (";
+		for (int i = front+1; i <= rear; i++) {
+			cout << list[i];
+			if (i != rear) { cout << " ,"; }
+		}
+		cout << ")"<<endl;
+
+	}
+}
+
+int main() {
+
+	//
+	//배열 생성
+	int list[SIZE];
+	//제어변수
+	string option;
+
+	//루프
+	while (true)
+	{
+		//큐의 값이 없을때
+		if (front ==rear) {
+			cout << "큐의 값이 없습니다." << endl;
+
+		}
+		//큐의 값이 있을때
+		else {
+			cout << "처음 인덱스 값 :" << front + 1 << "번, " << list[front+1] << " 값" << endl;
+			cout << "마지막 인덱스 값 :" << rear << "번, " << list[rear] << " 값" << endl;
+		}
+			cout << "인덱스 값을 삽입하거나 삭제하세요[삽입:insert,삭제:delete, 출력: print, 종료:exit]>>";
+			cin >> option;
+			//옵션마다 다른 함수 호출
+
+			//삽입
+			if (option == "insert") {
+				insert(list);
+			}
+			//삭제
+			else if (option == "delete") {
+				 Delete(list);
+			}
+			//값 출력
+			else if (option == "print") {
+				PrintList(list);
+			}
+			//종료
+			else if (option == "exit") {
+				return 0;
+			}
+			//잘못입력
+			else {
+				cout << "다시 입력해 주세요" << endl;
+			}
+			cout << endl<<endl;
+	}
+	
+
+
+
+
+
+
+}
